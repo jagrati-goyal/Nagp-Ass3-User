@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagp-user-deployment
+  labels:
+    app: nagp-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nagp-user
+  template:
+    metadata:
+      labels:
+        app: nagp-user
+    spec: 
+      containers:
+      - name: nagp-user
+        image: jagratigoyal/ass3user:tag2
+        env:
+         - name: MYSQL_URL
+           valueFrom:
+            configMapKeyRef:
+             name: app-env-config-url
+             key: MYSQL_URL    
+         - name: MYSQL_USER
+           valueFrom:
+            configMapKeyRef:
+             name: app-env-config-url
+             key: MYSQL_USER
+         - name: MYSQL_PASSWORD
+           valueFrom:
+            secretKeyRef:
+             name: my-db-pass
+             key: password
+         - name: JAEGER_HOST
+           valueFrom:
+            configMapKeyRef:
+             name: app-env-config-url
+             key: JAEGER_HOST
+        ports:
+        - containerPort: 8080

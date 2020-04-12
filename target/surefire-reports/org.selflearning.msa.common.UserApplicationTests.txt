@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.selflearning.msa.common.UserApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.892 s - in org.selflearning.msa.common.UserApplicationTests
